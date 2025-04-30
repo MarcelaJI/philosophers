@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/04/30 13:13:40 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/04/30 13:17:45 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int     main(int argc, char **argv)
     (void)argc;
     (void)argv;
 
-    printf("1: %d\n", ft_atoi("123")); 
-    printf("1: %d\n", ft_atoi("123a")); 
-    printf("1: %d\n", ft_atoi("12345678"));
+    printf("1: %d\n", ft_strlen("123a")); 
+    printf("1: %d\n", ft_strlen("123a")); 
+    printf("1: %d\n", ft_strlen("12345678"));
 
     printf("Hello\n");
     return (0);

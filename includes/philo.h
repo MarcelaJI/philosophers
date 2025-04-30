@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/04/30 13:11:03 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/04/30 13:18:10 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@
 
 int   is_only_digits(char *argv);
 int     ft_atoi(char *str);
+int     ft_strlen(char *str);
 
 #endif
