@@ -6,11 +6,13 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/04/30 12:52:36 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/04/30 13:13:40 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+// Comprueba que el input sea solo números
 
 int   is_only_digits(char *argv)
 {
@@ -28,14 +30,16 @@ int   is_only_digits(char *argv)
     return (1);
 }
 
+//
+
 int     main(int argc, char **argv)
 {
     (void)argc;
     (void)argv;
 
-    printf("1: %d\n", is_only_digits("123")); 
-    printf("1: %d\n", is_only_digits("123a")); 
-    printf("1: %d\n", is_only_digits(""));
+    printf("1: %d\n", ft_atoi("123")); 
+    printf("1: %d\n", ft_atoi("123a")); 
+    printf("1: %d\n", ft_atoi("12345678"));
 
     printf("Hello\n");
     return (0);
