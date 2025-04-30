@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/04/30 14:37:46 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/04/30 14:43:59 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,5 @@ int main(int argc, char **argv)
 
     if (check_program_input(argv, argc) != EXIT_SUCCESS)
         return (EXIT_FAILURE);
-
     return (EXIT_SUCCESS);
 }
