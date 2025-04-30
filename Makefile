@@ -6,7 +6,7 @@
 #    By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/30 11:41:09 by ingjimen          #+#    #+#              #
-#    Updated: 2025/04/30 11:46:48 by ingjimen         ###   ########.fr        #
+#    Updated: 2025/04/30 12:23:41 by ingjimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	= philo
 CC	= cc
 CFLAGS	= -Wall -Wextra -Werror -g
 
-SRC	= main.c
+SRC	= src/main.c
 
 OBJS	= $(SRC:.c=.o)
 
@@ -33,19 +33,17 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "$(YELLOW)Compiling $(NAME)$(NC)"
-	$(CC) $(CFLAGS) $(OBJS) -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@echo "$(RED)Removing .o files in all directories$(NC)"
+	@echo "$(RED)Removing .o files$(NC)"
 	rm -f $(OBJS)
-	@$(MAKE) clean -C
 
 fclean: clean
-	@echo "$(RED)Removing .a files and executables$(NC)"
+	@echo "$(RED)Removing executable$(NC)"
 	rm -f $(NAME)
-	@$(MAKE) fclean -C
 
 re: fclean all
