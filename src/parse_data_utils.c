@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 08:32:32 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 08:48:10 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/05 09:03:50 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,29 @@ int     ft_isspace(const char c)
 
 int     ft_isdigit(const char c)
 {
-    if (c >= 48 && c <= 57)
+    if (c >= '0' && c <= '9')
         return (1);
     return (0);
 }
 
-// static int   is_only_digits(char *argv)
-// {
-//     int i;
+int     ft_check_argument(char *argv)
+{
+    int     count;
 
-//     i = 0;
-//     if (!argv || argv[0] == '\0')
-//         return (0);
-//     while (argv[i] != '\0')
-//     {
-//         if (argv[i] < '0' || argv[i] > '9')
-//             return (0);
-//         i++;
-//     }
-//     return (1);
-// }
+    count = 0;
+    while (ft_isspace(argv[count]))
+        count++;
+    if (ft_isdigit(argv[count]) || argv[count] == '+')
+        count++;
+    else
+        return (EXIT_FAILURE);
+    if (argv[count] == '+')
+        count++;
+    while (argv[count])
+    {
+        if (!ft_isdigit(argv[count]))
+            return (EXIT_FAILURE);
+        count++;
+    }
+    return (EXIT_SUCCESS);
+}

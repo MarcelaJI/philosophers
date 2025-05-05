@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 08:50:03 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/05 09:00:18 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int     ft_atoi(const char *str);
 int     ft_strlen(char *str);
 int     ft_isspace(const char c);
 int     ft_isdigit(const char c);
+int     ft_check_argument(char *argv);
 int check_program_input(char **argv, int argc);
 
 #endif

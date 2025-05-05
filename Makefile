@@ -6,7 +6,7 @@
 #    By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/30 11:41:09 by ingjimen          #+#    #+#              #
-#    Updated: 2025/04/30 13:02:00 by ingjimen         ###   ########.fr        #
+#    Updated: 2025/05/05 08:54:52 by ingjimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CC	= cc
 CFLAGS	= -Wall -Wextra -Werror -g
 
 SRC	= src/main.c \
+		src/parse_data_utils.c \
 		src/utils.c
 
 OBJS	= $(SRC:.c=.o)
