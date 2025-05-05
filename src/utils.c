@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:00:47 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/04/30 13:17:02 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/05 08:49:54 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int     ft_strlen(char *str)
     return (i);
 }
 
-int     ft_atoi(char *str)
+int     ft_atoi(const char *str)
 {
     int     i;
     int     sign;

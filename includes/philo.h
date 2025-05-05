@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 08:47:57 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/05 08:50:03 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define RESET "\033[0m"
 
 
-int     ft_atoi(char *str);
+int     ft_atoi(const char *str);
 int     ft_strlen(char *str);
 int     ft_isspace(const char c);
 int     ft_isdigit(const char c);
