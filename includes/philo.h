@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/04/30 14:45:20 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/05 08:47:57 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@
 # define RESET "\033[0m"
 
 
-int   is_only_digits(char *argv);
 int     ft_atoi(char *str);
 int     ft_strlen(char *str);
+int     ft_isspace(const char c);
+int     ft_isdigit(const char c);
 int check_program_input(char **argv, int argc);
 
 #endif
