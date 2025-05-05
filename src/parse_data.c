@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 09:27:41 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 11:06:21 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:36:45 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void    parse_data(char **argv, t_philo_sim *table)
 {
     int     i;
 
-    i = 0;
+    i = 1;
     while (argv[i])
     {
-        if (!ft_check_argument(argv[i]))
-            return error_parsing(table);
+        if (ft_check_argument(argv[i]) == EXIT_FAILURE)
+            return (error_parsing(table));
         i++;
     }
     ft_init_sim_table(table, argv);

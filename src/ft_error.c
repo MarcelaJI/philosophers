@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:07:25 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 11:27:46 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:38:59 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void  error_exit(char *msg)
 
 void    error_argv(void)
 {
-    error_exit("Number of incorrect arguments\n");
+    error_exit("Error: Number of incorrect arguments\n");
 }
 
 void    error_parsing(t_philo_sim *table)

@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:00:47 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 08:49:54 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:32:54 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,32 @@ int     ft_strlen(char *str)
     return (i);
 }
 
-int     ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-    int     i;
-    int     sign;
-    int     result;
+	int	i;
+	int	sign;
+	long	result;
 
-    i = 0;
-    sign = 1;
-    result = 0;
-    while (str[i] <= 32)
-        i++;
-    if (str[i] == '-')
-    {
-        sign = -1;
-        i++;
-    }
-    else if (str[i] == '+')
-        i++;
-    while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
-    {
-        result = result * 10;
-        result = result + str[i] - '0';
-        i++;
-    }
-    return (result * sign);
+	i = 0;
+	sign = 1;
+	result = 0;
+
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		if ((result * sign) > INT_MAX || (result * sign) < INT_MIN)
+			return (-1);
+		i++;
+	}
+	return ((int)(result * sign));
 }
+

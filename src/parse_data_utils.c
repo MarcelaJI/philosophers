@@ -6,42 +6,43 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 08:32:32 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 09:48:21 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:31:24 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int     ft_isspace(const char c)
+int	ft_isspace(char c)
 {
-    if ((c == 32) || (c >= 9 && c <= 13))
-        return (1);
-    return (0);
+	return ((c == 32) || (c >= 9 && c <= 13));
 }
 
-int     ft_isdigit(const char c)
+int	ft_isdigit(char c)
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
+	return (c >= '0' && c <= '9');
 }
 
-int     ft_check_argument(char *argv)
+int	ft_check_argument(char *argv)
 {
-    int     count;
+	int	i;
 
-    count = 0;
-    while (ft_isspace(argv[count]))
-        count++;
-    if (ft_isdigit(argv[count]) || argv[count] == '+')
-        count++;
-    else
-        return (EXIT_FAILURE);
-    while (argv[count])
-    {
-        if (!ft_isdigit(argv[count]))
-            return (EXIT_FAILURE);
-        count++;
-    }
-    return (EXIT_SUCCESS);
+	i = 0;
+	while (ft_isspace(argv[i]))
+		i++;
+	if (argv[i] == '+')
+		i++;
+	if (!argv[i] || !ft_isdigit(argv[i]))
+		return (EXIT_FAILURE);
+	while (argv[i])
+	{
+		if (!ft_isdigit(argv[i]))
+			return (EXIT_FAILURE);
+		i++;
+	}
+	return (EXIT_SUCCESS);
 }
+
+
+
+
+

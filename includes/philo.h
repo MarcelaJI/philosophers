@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 11:25:59 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:33:25 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
+# include <limits.h>
+
 
 # define PHILO_MAX 250
 
@@ -56,8 +58,8 @@ void    error_parsing(t_philo_sim *table);
 void    error_argv(void);
 int     ft_atoi(const char *str);
 int     ft_strlen(char *str);
-int     ft_isspace(const char c);
-int     ft_isdigit(const char c);
+int     ft_isspace(char c);
+int     ft_isdigit(char c);
 int     ft_check_argument(char *argv);
 void    parse_data(char **argv, t_philo_sim *table);
 

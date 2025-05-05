@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 11:28:36 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:26:49 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,11 @@ int main(int argc, char **argv)
 {
     t_philo_sim *table;
 
-    table = NULL;
     if (argc < 5 || argc > 6)
-        error_argv();
-    if (!ft_check_argument(argv[1]))
-    {
-        error_parsing(table);
+        return (error_argv(), EXIT_FAILURE);
+    table = malloc(sizeof(t_philo_sim));
+    if (!table)
         return (EXIT_FAILURE);
-    }
     parse_data(argv, table);
     return (EXIT_SUCCESS);
 }
