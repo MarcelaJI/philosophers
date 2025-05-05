@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 09:00:18 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:25:59 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <sys/time.h>
 # include <unistd.h>
 
-# define PHILO_MAX 300
+# define PHILO_MAX 250
 
 # define RED "\033[31m"
 # define GREEN "\033[32m"
@@ -30,12 +30,35 @@
 # define WHITE "\033[37m"
 # define RESET "\033[0m"
 
+typedef struct s_philo_sim
+{
+	pthread_t		thread;
+	int				id;
+	int				eating;
+	int				meals_eaten;
+	size_t			last_meal;
+	size_t			time_to_die;
+	size_t			time_to_eat;
+	size_t			time_to_sleep;
+	size_t			start_time;
+	int				num_of_philos;
+	int				num_times_to_eat;
+	int				*dead;
+	pthread_mutex_t	*r_fork;
+	pthread_mutex_t	*l_fork;
+	pthread_mutex_t	*write_lock;
+	pthread_mutex_t	*dead_lock;
+	pthread_mutex_t	*meal_lock;
+}					t_philo_sim;
 
+void    error_exit(char *msg);
+void    error_parsing(t_philo_sim *table);
+void    error_argv(void);
 int     ft_atoi(const char *str);
 int     ft_strlen(char *str);
 int     ft_isspace(const char c);
 int     ft_isdigit(const char c);
 int     ft_check_argument(char *argv);
-int check_program_input(char **argv, int argc);
+void    parse_data(char **argv, t_philo_sim *table);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 08:32:32 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 09:03:50 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/05 09:48:21 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ int     ft_check_argument(char *argv)
         count++;
     else
         return (EXIT_FAILURE);
-    if (argv[count] == '+')
-        count++;
     while (argv[count])
     {
         if (!ft_isdigit(argv[count]))

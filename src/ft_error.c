@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 11:28:36 by ingjimen         ###   ########.fr       */
+/*   Created: 2025/05/05 11:07:25 by ingjimen          #+#    #+#             */
+/*   Updated: 2025/05/05 11:27:46 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-int main(int argc, char **argv)
+void  error_exit(char *msg)
 {
-    t_philo_sim *table;
+    printf(RED"%s"RESET, msg);
+    exit(EXIT_FAILURE);
+}
 
-    table = NULL;
-    if (argc < 5 || argc > 6)
-        error_argv();
-    if (!ft_check_argument(argv[1]))
-    {
-        error_parsing(table);
-        return (EXIT_FAILURE);
-    }
-    parse_data(argv, table);
-    return (EXIT_SUCCESS);
+void    error_argv(void)
+{
+    error_exit("Number of incorrect arguments\n");
+}
+
+void    error_parsing(t_philo_sim *table)
+{
+    (void)table;
+    error_exit("Error: Argument parsing failed.\n");
 }
