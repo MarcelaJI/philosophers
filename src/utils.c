@@ -3,37 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:00:47 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 12:32:54 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/06 09:06:04 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int     ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-    int i;
+	int	i;
 
-    if (str == NULL)
-        return (0);
-    i = 0;
-    while (str[i] != '\0')
-        i++;
-    return (i);
+	if (str == NULL)
+		return (0);
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
+	int		i;
+	int		sign;
 	long	result;
 
 	i = 0;
 	sign = 1;
 	result = 0;
-
 	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-')
@@ -52,4 +51,3 @@ int	ft_atoi(const char *str)
 	}
 	return ((int)(result * sign));
 }
-

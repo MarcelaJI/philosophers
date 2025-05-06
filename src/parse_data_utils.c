@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_data_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 08:32:32 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 12:31:24 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/06 09:05:51 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,3 @@ int	ft_check_argument(char *argv)
 	}
 	return (EXIT_SUCCESS);
 }
-
-
-
-
-

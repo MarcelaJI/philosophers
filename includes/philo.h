@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/05 12:33:25 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/06 09:06:27 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+# include <limits.h>
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
-# include <limits.h>
-
 
 # define PHILO_MAX 250
 
@@ -53,14 +52,14 @@ typedef struct s_philo_sim
 	pthread_mutex_t	*meal_lock;
 }					t_philo_sim;
 
-void    error_exit(char *msg);
-void    error_parsing(t_philo_sim *table);
-void    error_argv(void);
-int     ft_atoi(const char *str);
-int     ft_strlen(char *str);
-int     ft_isspace(char c);
-int     ft_isdigit(char c);
-int     ft_check_argument(char *argv);
-void    parse_data(char **argv, t_philo_sim *table);
+void				error_exit(char *msg);
+void				error_parsing(t_philo_sim *table);
+void				error_argv(void);
+int					ft_atoi(const char *str);
+int					ft_strlen(char *str);
+int					ft_isspace(char c);
+int					ft_isdigit(char c);
+int					ft_check_argument(char *argv);
+void				parse_data(char **argv, t_philo_sim *table);
 
 #endif
