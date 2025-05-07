@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/07 09:21:31 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:55:20 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_philo
 	pthread_mutex_t *l_fork;
 	pthread_mutex_t *r_fork;
 	t_sim           *sim;          // referencia a los datos globales
+	pthread_mutex_t	mutex;  // Protege el acceso a last_meal, meals_eaten, etc.
 }	t_philo;
 
 
