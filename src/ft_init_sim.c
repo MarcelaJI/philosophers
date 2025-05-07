@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 08:36:11 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/07 09:54:11 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:09:39 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,13 @@ void    init_forks(t_sim *sim)
         i++;
     }
 }
-
-void	assign_forks(t_philo *philo, int index, t_sim *sim)
+/*Estoy utlizando tenedor circular porque los filósofos están en un círculo. El módulo hace
+que el índice "Vuelva al principio" cuando llega al final, simulando esa forma circular en la mesa.
+Porque el último filósofo (por ejemplo, el número 4), su tenedor derecho es el tenedor 0, no hay un fork[5].
+Si index = 4 y num_of_philos = 5,
+entonces: (4 + 1) % 5 = 0
+Así el filósofo 4 usa el tenedor 0 como su tenedor derecho*/
+static void     assign_forks(t_philo *philo, int index, t_sim *sim)
 {
 	philo->l_fork = &sim->forks[index];
 	philo->r_fork = &sim->forks[(index + 1) % sim->num_of_philos];
