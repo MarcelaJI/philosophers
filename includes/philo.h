@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/06 09:06:27 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/07 08:24:53 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,35 +31,47 @@
 # define WHITE "\033[37m"
 # define RESET "\033[0m"
 
-typedef struct s_philo_sim
+// Declaración directa
+typedef struct s_sim t_sim;
+// Estructura para cada filósofo
+typedef struct s_philo
 {
-	pthread_t		thread;
-	int				id;
-	int				eating;
-	int				meals_eaten;
-	size_t			last_meal;
-	size_t			time_to_die;
-	size_t			time_to_eat;
-	size_t			time_to_sleep;
-	size_t			start_time;
-	int				num_of_philos;
-	int				num_times_to_eat;
-	int				*dead;
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*l_fork;
-	pthread_mutex_t	*write_lock;
-	pthread_mutex_t	*dead_lock;
-	pthread_mutex_t	*meal_lock;
-}					t_philo_sim;
+	int             id;
+	int             meals_eaten;
+	size_t          last_meal;
+	pthread_t       thread;
+	pthread_mutex_t *l_fork;
+	pthread_mutex_t *r_fork;
+	t_sim           *sim;          // referencia a los datos globales
+}	t_philo;
+
+
+// Estructura general de la simulación
+typedef struct s_sim
+{
+	int		num_of_philos;
+	int		time_to_die;
+	int		time_to_eat;
+	int		time_to_sleep;
+	int		num_times_to_eat;
+	int		dead;
+	size_t	start_time;
+	pthread_mutex_t write_lock;
+	pthread_mutex_t dead_lock;
+	pthread_mutex_t meal_lock;
+	pthread_mutex_t *forks;        // array de mutexes
+	t_philo         *philos;       // array de filósofos
+}	t_sim;
+
 
 void				error_exit(char *msg);
-void				error_parsing(t_philo_sim *table);
+void				error_parsing(t_sim *table);
 void				error_argv(void);
 int					ft_atoi(const char *str);
 int					ft_strlen(char *str);
 int					ft_isspace(char c);
 int					ft_isdigit(char c);
 int					ft_check_argument(char *argv);
-void				parse_data(char **argv, t_philo_sim *table);
+void				parse_data(char **argv, t_sim *table);
 
 #endif

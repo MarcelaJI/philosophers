@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 09:27:41 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/06 09:05:58 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/07 08:19:21 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-static void	ft_init_sim_table(t_philo_sim *table, char **argv)
+static void	ft_init_sim_table(t_sim *table, char **argv)
 {
 	table->num_of_philos = ft_atoi(argv[1]);
 	table->time_to_die = ft_atoi(argv[2]);
@@ -24,7 +24,7 @@ static void	ft_init_sim_table(t_philo_sim *table, char **argv)
 		table->num_times_to_eat = -1;
 }
 
-void	parse_data(char **argv, t_philo_sim *table)
+void	parse_data(char **argv, t_sim *table)
 {
 	int	i;
 

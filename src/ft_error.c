@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:07:25 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/06 09:14:24 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/07 08:20:12 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	error_argv(void)
 	error_exit("Error: Number of incorrect arguments\n");
 }
 
-void	error_parsing(t_philo_sim *table)
+void	error_parsing(t_sim *table)
 {
 	(void)table;
 	error_exit("Error: Argument parsing failed.\n");
