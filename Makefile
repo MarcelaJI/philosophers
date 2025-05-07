@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+         #
+#    By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/30 11:41:09 by ingjimen          #+#    #+#              #
-#    Updated: 2025/05/06 09:06:12 by ingjimen         ###   ########.fr        #
+#    Updated: 2025/05/07 08:36:51 by ingjimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC	= src/main.c \
 		src/parse_data_utils.c \
 		src/parse_data.c \
 		src/ft_error.c \
+		src/ft_init_sim.c \
 		src/utils.c
 
 OBJS	= $(SRC:.c=.o)
