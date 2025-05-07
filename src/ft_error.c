@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:07:25 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/07 08:20:12 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/07 08:31:16 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	error_argv(void)
 void	error_parsing(t_sim *table)
 {
 	(void)table;
-	error_exit("Error: Argument parsing failed.\n");
+	error_exit("Error: Parsing error.\n");
 }
