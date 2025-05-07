@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/07 09:04:32 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:21:31 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_sim
 
 void				error_exit(char *msg);
 void				error_parsing(t_sim *table);
-void				error_argv(void);
 int					ft_atoi(const char *str);
 int					ft_strlen(char *str);
 int					ft_isspace(char c);

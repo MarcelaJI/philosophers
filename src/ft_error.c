@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 11:07:25 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/07 08:31:16 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:21:18 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@ void	error_exit(char *msg)
 {
 	printf(RED "%s" RESET, msg);
 	exit(EXIT_FAILURE);
-}
-
-void	error_argv(void)
-{
-	error_exit("Error: Number of incorrect arguments\n");
 }
 
 void	error_parsing(t_sim *table)
