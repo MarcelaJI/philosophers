@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/07 09:55:20 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/07 09:56:32 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ int					ft_isdigit(char c);
 int					ft_check_argument(char *argv);
 void				parse_data(char **argv, t_sim *table);
 void    			init_forks(t_sim *sim);
+void 				init_philos(t_sim *sim);
 
 #endif
