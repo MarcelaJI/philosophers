@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/07 09:57:09 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/08 21:09:51 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_sim *sim;
+	int		i;
 
 	if (argc < 5 || argc > 6)
 		error_exit("Error: Number of incorrect arguments\n");
@@ -26,6 +27,15 @@ int	main(int argc, char **argv)
 	init_philos(sim);
 	printf(YELLOW "Forks initialized successfully!\n" RESET);
 	printf(GREEN "Philosophers initialized successfully!\n" RESET);
+
+	start_threads(sim);
+	i = 0;
+	while (i < sim->num_of_philos)
+	{
+		pthread_join(sim->philos[i].thread, NULL);
+		i++;
+	}
+	
 
 	free(sim);
 	return (EXIT_SUCCESS);
