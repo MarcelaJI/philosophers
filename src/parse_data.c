@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 09:27:41 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/07 08:19:21 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/08 09:31:40 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	parse_data(char **argv, t_sim *table)
 		i++;
 	}
 	ft_init_sim_table(table, argv);
-	if (table->num_of_philos < 1 || table->num_of_philos > 250
+	if (table->num_of_philos < 1 || table->num_of_philos > PHILO_MAX
 		|| table->time_to_die <= 0 || table->time_to_eat <= 0
 		|| table->time_to_sleep <= 0)
 		return (error_parsing(table));

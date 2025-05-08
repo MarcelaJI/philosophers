@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/07 10:01:55 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/08 09:30:41 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
+# include <stdbool.h>
 
-# define PHILO_MAX 250
+# define PHILO_MAX 200
 
 # define RED "\033[31m"
 # define GREEN "\033[32m"
@@ -44,6 +45,7 @@ typedef struct s_philo
 	pthread_mutex_t *r_fork;
 	t_sim           *sim;          // referencia a los datos globales
 	pthread_mutex_t	mutex;  // Protege el acceso a last_meal, meals_eaten, etc.
+	bool            is_eating;
 }	t_philo;
 
 
