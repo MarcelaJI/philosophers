@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/08 09:30:41 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/08 20:58:24 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_sim
 	pthread_mutex_t meal_lock;
 	pthread_mutex_t *forks;        // array de mutexes
 	t_philo         *philos;       // array de filósofos
+	struct timeval	begin_time;
 }	t_sim;
 
 
