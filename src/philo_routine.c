@@ -6,20 +6,26 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:02:12 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/09 13:11:42 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:28:25 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void    *philo_routine(void *arg)
+void    *philo_routine(t_philo *philo)
 {
-    t_philo     *philo;
-
-    philo = (t_philo *)arg;
-    printf("%ld %d has started\n", get_elapsed_ms(philo->sim), philo->id);
-    usleep(1000);
-    return (NULL);
+    // Si el filosofo tiene un número impar, duerme un poco antes para evitar colisiones
+    if (philo->id % 2 == 0)
+        usleep(1000);
+    while (1)
+    {
+        philo_think(philo);
+        take_forks(philo);
+        philo_eat(philo);
+        pthread_mutex_unlock(philo->l_fork);
+        pthread_mutex_unlock(philo->r_fork);
+        philo_sleep(philo);
+    }
 }
 
 void    take_forks(t_philo *philo)
