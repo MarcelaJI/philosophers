@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/09 13:44:55 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:55:06 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ typedef struct s_philo
 	t_sim           *sim;          // referencia a los datos globales
 	pthread_mutex_t	mutex;  // Protege el acceso a last_meal, meals_eaten, etc.
 	bool            is_eating;
-	int				someone_died;     // flag que indica si algún filósofo murió
-	pthread_mutex_t	dead_lock;        // protege el acceso a someone_died
-
 }	t_philo;
 
 
@@ -68,13 +65,14 @@ typedef struct s_sim
 	pthread_mutex_t *forks;        // array de mutexes
 	t_philo         *philos;       // array de filósofos
 	struct timeval	begin_time;
+	int				someone_died;     // flag que indica si algún filósofo murió
+	pthread_mutex_t	dead_lock;        // protege el acceso a someone_died
 }	t_sim;
 
 
 void				error_exit(char *msg);
 void				error_parsing(t_sim *table);
 int					ft_atoi(const char *str);
-int					ft_strlen(char *str);
 int					ft_isspace(char c);
 int					ft_isdigit(char c);
 int					ft_check_argument(char *argv);
