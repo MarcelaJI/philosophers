@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/09 13:15:28 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:36:22 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,6 @@ int	main(int argc, char **argv)
 	print_status(&sim->philos[0], "is testing print_status", YELLOW);
 	printf(YELLOW "Forks initialized successfully!\n" RESET);
 	printf(GREEN "Philosophers initialized successfully!\n" RESET);
-	take_forks(&sim->philos[0]);
-	philo_eat(&sim->philos[0]);
-	philo_sleep(&sim->philos[0]);
-	philo_think(&sim->philos[0]);
-	printf("Philo %d meals eaten: %d\n", sim->philos[0].id, sim->philos[0].meals_eaten);
-	pthread_mutex_unlock(sim->philos[0].l_fork);
-	pthread_mutex_unlock(sim->philos[0].r_fork);
 	start_threads(sim);
 	i = 0;
 	while (i < sim->num_of_philos)

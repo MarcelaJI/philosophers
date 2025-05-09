@@ -6,14 +6,15 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:02:12 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/09 13:28:25 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:38:35 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void    *philo_routine(t_philo *philo)
+void    *philo_routine(void *arg)
 {
+    t_philo *philo = (t_philo *)arg;
     // Si el filosofo tiene un número impar, duerme un poco antes para evitar colisiones
     if (philo->id % 2 == 0)
         usleep(1000);

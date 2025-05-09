@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/09 13:21:31 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:38:18 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void				parse_data(char **argv, t_sim *table);
 void    			init_forks(t_sim *sim);
 void 				init_philos(t_sim *sim);
 void		start_threads(t_sim *sim);
-void		*philo_routine(t_philo *philo);
+void		*philo_routine(void *arg);
 long		get_elapsed_ms(t_sim *sim);
 void	print_status(t_philo *philo, char *message, char *color);
 void    take_forks(t_philo *philo);
