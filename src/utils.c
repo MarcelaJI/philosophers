@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:00:47 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/09 10:46:36 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/09 11:01:55 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,14 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return ((int)(result * sign));
+}
+
+void	print_status(t_philo *philo, char *message, char *color)
+{
+	long	timestamp;
+
+	pthread_mutex_lock(&philo->sim->write_lock);
+	timestamp = get_elapsed_ms(philo->sim);
+	printf("%s%ld %d %s%s\n", color, timestamp, philo->id, message, RESET);
+	pthread_mutex_unlock(&philo->sim->write_lock);
 }
