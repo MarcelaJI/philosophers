@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:02:12 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/09 11:43:56 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/09 13:11:42 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,28 @@ void    take_forks(t_philo *philo)
     print_status(philo, "has taken a fork", CYAN);
 }
 
-void eat(t_philo *philo)
+void philo_eat(t_philo *philo)
 {
     pthread_mutex_lock(&philo->mutex);
     philo->last_meal = get_elapsed_ms(philo->sim);
     philo->is_eating = true;
     pthread_mutex_unlock(&philo->mutex);
-    print_status(philo, "is eating", GREEN);
+    print_status(philo, "is eating 🍴", GREEN);
     usleep(philo->sim->time_to_eat * 1000); // espera simulando que está comiendo
     pthread_mutex_lock(&philo->mutex);
     philo->meals_eaten++;
     philo->is_eating = false;
     pthread_mutex_unlock(&philo->mutex);
+}
+
+void        philo_sleep(t_philo *philo)
+{
+    print_status(philo, "is sleeping 😴", BLUE);
+    usleep(philo->sim->time_to_sleep * 1000);
+}
+
+// No necesita dormir (el pensar es inmediato en el ciclo)
+void        philo_think(t_philo *philo)
+{
+    print_status(philo, "is thinking 🤔", MAGENTA);
 }
