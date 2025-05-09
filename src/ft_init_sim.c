@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 08:36:11 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/07 10:09:39 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/09 11:05:58 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void    init_forks(t_sim *sim)
         pthread_mutex_init(&sim->forks[i], NULL);
         i++;
     }
+    pthread_mutex_init(&sim->write_lock, NULL);
 }
 /*Estoy utlizando tenedor circular porque los filósofos están en un círculo. El módulo hace
 que el índice "Vuelva al principio" cuando llega al final, simulando esa forma circular en la mesa.

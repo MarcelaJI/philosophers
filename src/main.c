@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/08 21:09:51 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/09 11:10:56 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int argc, char **argv)
 	parse_data(argv, sim);
 	init_forks(sim);
 	init_philos(sim);
+	gettimeofday(&sim->begin_time, NULL);
+	print_status(&sim->philos[0], "is testing print_status", YELLOW);
 	printf(YELLOW "Forks initialized successfully!\n" RESET);
 	printf(GREEN "Philosophers initialized successfully!\n" RESET);
 
@@ -35,8 +37,6 @@ int	main(int argc, char **argv)
 		pthread_join(sim->philos[i].thread, NULL);
 		i++;
 	}
-	
-
 	free(sim);
 	return (EXIT_SUCCESS);
 }
