@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 09:27:41 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/09 13:51:57 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 10:28:18 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ void	parse_data(char **argv, t_sim *table)
 		|| table->time_to_sleep <= 0)
 		return (error_parsing(table));
 	table->someone_died = 0;
+	pthread_mutex_init(&table->dead_lock, NULL);
 }
