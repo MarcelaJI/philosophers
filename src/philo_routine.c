@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:02:12 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 11:32:11 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 22:04:02 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,28 @@ void *philo_routine(void *arg)
 	return (NULL);
 }
 
+
 void    take_forks(t_philo *philo)
 {
-    if (philo_has_died(philo))
-        return ;
-    pthread_mutex_lock(philo->l_fork);
-    print_status(philo, "has taken a fork", CYAN);
-    if (philo_has_died(philo))
-    {
-        pthread_mutex_unlock(philo->l_fork);
-        return ;
-    }
-    pthread_mutex_lock(philo->r_fork);
-    print_status(philo, "has taken a fork", CYAN);
+	if (philo_has_died(philo))
+		return;
+
+	if (philo->id % 2 == 0)
+	{
+		pthread_mutex_lock(philo->r_fork);
+		print_status(philo, "has taken a fork", CYAN);
+		pthread_mutex_lock(philo->l_fork);
+		print_status(philo, "has taken a fork", CYAN);
+	}
+	else
+	{
+		pthread_mutex_lock(philo->l_fork);
+		print_status(philo, "has taken a fork", CYAN);
+		pthread_mutex_lock(philo->r_fork);
+		print_status(philo, "has taken a fork", CYAN);
+	}
 }
+
 
 void philo_eat(t_philo *philo)
 {

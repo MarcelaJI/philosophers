@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 12:14:05 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 21:23:00 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 	t_sim		*sim;
 	pthread_t	monitor;
 	int			i;
+	long		start_ms;
 
 	if (argc < 5 || argc > 6)
 		error_exit("Error: Number of incorrect arguments\n");
@@ -27,9 +28,24 @@ int	main(int argc, char **argv)
 
 	parse_data(argv, sim);
 	init_forks(sim);
-	gettimeofday(&sim->begin_time, NULL);
-	printf("🟢 begin_time set at: %ld.%06ld\n", sim->begin_time.tv_sec, sim->begin_time.tv_usec);
 	init_philos(sim);
+
+	gettimeofday(&sim->begin_time, NULL);
+	printf("🟢 begin_time set at: %ld.%06ld\n",
+		sim->begin_time.tv_sec, sim->begin_time.tv_usec);
+
+	start_ms = get_elapsed_ms(sim);
+	i = 0;
+	while (i < sim->num_of_philos)
+	{
+		pthread_mutex_lock(&sim->philos[i].mutex);
+		sim->philos[i].last_meal = start_ms;
+		pthread_mutex_unlock(&sim->philos[i].mutex);
+		printf("🕒 SET last_meal for philo %d = %ld\n",
+			sim->philos[i].id, sim->philos[i].last_meal);
+		i++;
+	}
+
 	usleep(100);
 	if (pthread_create(&monitor, NULL, monitor_func, sim) != 0)
 		error_exit("Error: Failed to create monitor thread");
@@ -37,15 +53,21 @@ int	main(int argc, char **argv)
 	start_threads(sim);
 	i = 0;
 	while (i < sim->num_of_philos)
-		pthread_join(sim->philos[i++].thread, NULL);
+	{
+		pthread_join(sim->philos[i].thread, NULL);
+		i++;
+	}
 	pthread_join(monitor, NULL);
 	i = 0;
 	while (i < sim->num_of_philos)
-		pthread_mutex_destroy(&sim->forks[i++]);
-
+	{
+		pthread_mutex_destroy(&sim->forks[i]);
+		i++;
+	}
 	pthread_mutex_destroy(&sim->dead_lock);
 	free(sim->philos);
 	free(sim->forks);
 	free(sim);
 	return (EXIT_SUCCESS);
 }
+
