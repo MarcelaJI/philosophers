@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:02:12 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 10:46:21 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 10:57:55 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void *philo_routine(void *arg)
 		philo_think(philo);
 		take_forks(philo);
 		philo_eat(philo);
-		pthread_mutex_unlock(philo->l_fork);
-		pthread_mutex_unlock(philo->r_fork);
+        release_forks(philo);
 		philo_sleep(philo);
 	}
 	return (NULL);
