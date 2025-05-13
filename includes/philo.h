@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 10:45:28 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 10:55:16 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	philo_sleep(t_philo *philo);
 void	philo_think(t_philo *philo);
 void	*monitor_func(void *arg);
 int     philo_has_died(t_philo *philo);
+void 	release_forks(t_philo *philo);
+
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 10:43:40 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 10:45:14 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 10:55:00 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,10 @@ int     philo_has_died(t_philo *philo)
     result = philo->sim->someone_died;
 	pthread_mutex_unlock(&philo->sim->dead_lock);
 	return (result);
+}
+
+void release_forks(t_philo *philo)
+{
+	pthread_mutex_unlock(philo->r_fork);
+	pthread_mutex_unlock(philo->l_fork);
 }
