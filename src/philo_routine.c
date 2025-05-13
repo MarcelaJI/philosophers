@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:02:12 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 11:01:38 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:05:46 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ void philo_eat(t_philo *philo)
     philo->is_eating = true;
     pthread_mutex_unlock(&philo->mutex);
     print_status(philo, "is eating 🍴", GREEN);
-    usleep(philo->sim->time_to_eat * 1000); // espera simulando que está comiendo
+    if (philo_has_died(philo))
+        return ;
+    usleep(philo->sim->time_to_eat * 1000);
     pthread_mutex_lock(&philo->mutex);
     philo->meals_eaten++;
     philo->is_eating = false;
@@ -61,11 +63,15 @@ void philo_eat(t_philo *philo)
 void        philo_sleep(t_philo *philo)
 {
     print_status(philo, "is sleeping 😴", BLUE);
+    if (philo_has_died(philo))
+        return ;
     usleep(philo->sim->time_to_sleep * 1000);
 }
 
 // No necesita dormir (el pensar es inmediato en el ciclo)
 void        philo_think(t_philo *philo)
 {
+    if (philo_has_died(philo))
+        return ;
     print_status(philo, "is thinking 🤔", MAGENTA);
 }
