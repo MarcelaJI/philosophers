@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 10:21:20 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 10:45:28 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_sim
 	t_philo         *philos;       // array de filósofos
 	struct timeval	begin_time;
 	int				someone_died;     // flag que indica si algún filósofo murió
-	pthread_mutex_t	dead_lock;        // protege el acceso a someone_died
 }	t_sim;
 
 
@@ -88,6 +87,7 @@ void	philo_eat(t_philo *philo);
 void	philo_sleep(t_philo *philo);
 void	philo_think(t_philo *philo);
 void	*monitor_func(void *arg);
+int     philo_has_died(t_philo *philo);
 
 
 #endif

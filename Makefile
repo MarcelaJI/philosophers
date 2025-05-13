@@ -6,7 +6,7 @@
 #    By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/30 11:41:09 by ingjimen          #+#    #+#              #
-#    Updated: 2025/05/09 13:58:48 by ingjimen         ###   ########.fr        #
+#    Updated: 2025/05/13 10:43:34 by ingjimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC	= src/main.c \
 		src/ft_error.c \
 		src/ft_init_sim.c \
 		src/philo_routine.c \
+		src/philo_routine_utils.c \
 		src/start_threads.c \
 		src/monitor.c \
 		src/utils.c
