@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 10:43:40 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 10:55:00 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:17:15 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,9 @@ void release_forks(t_philo *philo)
 {
 	pthread_mutex_unlock(philo->r_fork);
 	pthread_mutex_unlock(philo->l_fork);
+}
+
+bool    should_continue(t_philo *philo)
+{
+    return (!philo_has_died(philo));
 }

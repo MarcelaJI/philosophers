@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:02:12 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 11:05:46 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:19:28 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,30 @@
 
 void *philo_routine(void *arg)
 {
-	t_philo *philo = (t_philo *)arg;
+	t_philo *philo;
 
+    philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
 		usleep(1000);
-	while (!philo_has_died(philo))
-	{
+	while (should_continue(philo))
+    {
+       if (philo_has_died(philo))
+			break;
 		philo_think(philo);
+		if (philo_has_died(philo))
+			break;
 		take_forks(philo);
+		if (philo_has_died(philo))
+		{
+			release_forks(philo);
+			break;
+		}
 		philo_eat(philo);
-        release_forks(philo);
+		release_forks(philo);
+		if (philo_has_died(philo))
+			break;
 		philo_sleep(philo);
-	}
+    }
 	return (NULL);
 }
 

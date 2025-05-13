@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 10:39:33 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:26:08 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	t_sim *sim;
-	pthread_t monitor;
-	int		i;
+	t_sim		*sim;
+	pthread_t	monitor;
+	int			i;
 
 	if (argc < 5 || argc > 6)
 		error_exit("Error: Number of incorrect arguments\n");
@@ -27,18 +27,26 @@ int	main(int argc, char **argv)
 	init_forks(sim);
 	init_philos(sim);
 	gettimeofday(&sim->begin_time, NULL);
-	pthread_create(&monitor, NULL, monitor_func, sim);
-	print_status(&sim->philos[0], "is testing print_status", YELLOW);
-	printf(YELLOW "Forks initialized successfully!\n" RESET);
-	printf(GREEN "Philosophers initialized successfully!\n" RESET);
+	if (pthread_create(&monitor, NULL, monitor_func, sim) != 0)
+		error_exit("Error: Failed to create monitor thread");
 	start_threads(sim);
 	i = 0;
 	while (i < sim->num_of_philos)
-	{
-		pthread_join(sim->philos[i].thread, NULL);
-		i++;
-	}
+		pthread_join(sim->philos[i++].thread, NULL);
 	pthread_join(monitor, NULL);
+	i = 0;
+	while (i < sim->num_of_philos)
+		pthread_mutex_destroy(&sim->philos[i++].mutex);
+
+	i = 0;
+	while (i < sim->num_of_philos)
+		pthread_mutex_destroy(&sim->forks[i++]);
+
+	pthread_mutex_destroy(&sim->dead_lock);
+
+	free(sim->philos);
+	free(sim->forks);
 	free(sim);
-	return (0);
+
+	return (EXIT_SUCCESS);
 }
