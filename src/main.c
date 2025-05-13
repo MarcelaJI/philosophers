@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 10:31:21 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 10:39:33 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ int	main(int argc, char **argv)
 	}
 	pthread_join(monitor, NULL);
 	free(sim);
-	return (EXIT_SUCCESS);
+	return (0);
 }
