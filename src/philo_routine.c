@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:02:12 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/09 13:38:35 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 10:35:33 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ void    *philo_routine(void *arg)
         usleep(1000);
     while (1)
     {
+        pthread_mutex_lock(&philo->sim->dead_lock);
+        if (philo->sim->someone_died)
+        {
+	        pthread_mutex_unlock(&philo->sim->dead_lock);
+	        break;
+        }
+        pthread_mutex_unlock(&philo->sim->dead_lock);
         philo_think(philo);
         take_forks(philo);
         philo_eat(philo);
