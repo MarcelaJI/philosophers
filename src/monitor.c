@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:58:35 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 10:20:50 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:55:41 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,24 @@
 
 static int	philo_died(t_philo *philo)
 {
-	long	time;
+	long	last_meal;
+	long	now;
 
 	pthread_mutex_lock(&philo->mutex);
-	time = get_elapsed_ms(philo->sim) - philo->last_meal;
+	last_meal = philo->last_meal;
 	pthread_mutex_unlock(&philo->mutex);
-	return (time >= philo->sim->time_to_die);
+
+	now = get_elapsed_ms(philo->sim);
+
+	if ((now - last_meal) >= philo->sim->time_to_die)
+	{
+		printf("🛑 PHILO %d DIED — now: %ld, last_meal: %ld, delta: %ld\n",
+			philo->id, now, last_meal, now - last_meal);
+		return (1);
+	}
+	return (0);
 }
+
 
 int	check_death(t_sim *sim)
 {
