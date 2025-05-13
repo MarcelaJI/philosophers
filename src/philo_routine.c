@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:02:12 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 11:19:28 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:32:11 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,21 @@ void    take_forks(t_philo *philo)
 
 void philo_eat(t_philo *philo)
 {
-    pthread_mutex_lock(&philo->mutex);
-    philo->last_meal = get_elapsed_ms(philo->sim);
-    philo->is_eating = true;
-    pthread_mutex_unlock(&philo->mutex);
-    print_status(philo, "is eating 🍴", GREEN);
-    if (philo_has_died(philo))
-        return ;
-    usleep(philo->sim->time_to_eat * 1000);
-    pthread_mutex_lock(&philo->mutex);
-    philo->meals_eaten++;
-    philo->is_eating = false;
-    pthread_mutex_unlock(&philo->mutex);
+	long now;
+
+    now = get_elapsed_ms(philo->sim);
+	pthread_mutex_lock(&philo->mutex);
+	philo->last_meal = now;
+	philo->is_eating = true;
+	pthread_mutex_unlock(&philo->mutex);
+	print_status(philo, "is eating 🍴", GREEN);
+	usleep(philo->sim->time_to_eat * 1000);
+	pthread_mutex_lock(&philo->mutex);
+	philo->meals_eaten++;
+	philo->is_eating = false;
+	pthread_mutex_unlock(&philo->mutex);
 }
+
 
 void        philo_sleep(t_philo *philo)
 {

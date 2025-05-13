@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 11:26:08 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:34:04 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 	init_forks(sim);
 	init_philos(sim);
 	gettimeofday(&sim->begin_time, NULL);
+	usleep(100);
 	if (pthread_create(&monitor, NULL, monitor_func, sim) != 0)
 		error_exit("Error: Failed to create monitor thread");
 	start_threads(sim);
