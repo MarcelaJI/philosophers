@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:02:12 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 22:11:33 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/14 08:25:17 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 void *philo_routine(void *arg)
 {
 	t_philo *philo;
+	philo = (t_philo *)arg;
 
-    philo = (t_philo *)arg;
+	wait_all_threads(philo->sim);
 	if (philo->id % 2 == 0)
 		usleep(1000);
 	while (should_continue(philo))
-    {
-       if (philo_has_died(philo))
+	{
+		if (philo_has_died(philo))
 			break;
 		philo_think(philo);
 		if (philo_has_died(philo))
@@ -37,9 +38,10 @@ void *philo_routine(void *arg)
 		if (philo_has_died(philo))
 			break;
 		philo_sleep(philo);
-    }
+	}
 	return (NULL);
 }
+
 
 
 void    take_forks(t_philo *philo)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 21:23:00 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/14 08:26:25 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int	main(int argc, char **argv)
 	init_forks(sim);
 	init_philos(sim);
 
-	gettimeofday(&sim->begin_time, NULL);
+	pthread_mutex_init(&sim->start_mutex, NULL); 
+	sim->all_threads_ready = false;             
+
+	gettimeofday(&sim->begin_time, NULL); 
 	printf("🟢 begin_time set at: %ld.%06ld\n",
 		sim->begin_time.tv_sec, sim->begin_time.tv_usec);
 
@@ -46,11 +49,14 @@ int	main(int argc, char **argv)
 		i++;
 	}
 
-	usleep(100);
 	if (pthread_create(&monitor, NULL, monitor_func, sim) != 0)
 		error_exit("Error: Failed to create monitor thread");
 
 	start_threads(sim);
+	pthread_mutex_lock(&sim->start_mutex);
+	sim->all_threads_ready = true;
+	pthread_mutex_unlock(&sim->start_mutex);
+
 	i = 0;
 	while (i < sim->num_of_philos)
 	{
@@ -58,16 +64,20 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	pthread_join(monitor, NULL);
+
 	i = 0;
 	while (i < sim->num_of_philos)
 	{
 		pthread_mutex_destroy(&sim->forks[i]);
 		i++;
 	}
+	pthread_mutex_destroy(&sim->start_mutex);
 	pthread_mutex_destroy(&sim->dead_lock);
+
 	free(sim->philos);
 	free(sim->forks);
 	free(sim);
 	return (EXIT_SUCCESS);
 }
+
 

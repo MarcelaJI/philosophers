@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 11:07:23 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/14 08:21:15 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/14 08:26:39 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	wait_all_threads(t_sim *sim)
 	gettimeofday(&sim->begin_time, NULL);
 	pthread_mutex_unlock(&sim->start_mutex);
 }
-
-
 
 void	start_threads(t_sim *sim)
 {

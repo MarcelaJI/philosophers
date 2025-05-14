@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/14 08:20:27 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/14 08:26:48 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	*monitor_func(void *arg);
 int     philo_has_died(t_philo *philo);
 void 	release_forks(t_philo *philo);
 bool    should_continue(t_philo *philo);
+void	wait_all_threads(t_sim *sim);
 
 
 
