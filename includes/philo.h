@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/14 08:26:48 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/14 08:44:45 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_sim
 	struct timeval	begin_time;
 	int				someone_died;     // flag que indica si algún filósofo murió
 	bool			all_threads_ready;
+	bool            start_sim;
 }	t_sim;
 
 
