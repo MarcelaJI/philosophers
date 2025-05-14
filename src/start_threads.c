@@ -6,22 +6,24 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 11:07:23 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/14 08:26:39 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/14 08:29:17 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-long get_elapsed_ms(t_sim *sim)
+long	get_elapsed_ms(t_sim *sim)
 {
-	struct timeval now;
-	long long ms;
-	
-	gettimeofday(&now, NULL);
-	ms = (now.tv_sec - sim->begin_time.tv_sec) * 1000;
-	ms += (now.tv_usec - sim->begin_time.tv_usec) / 100;
-	return (ms);
+	struct timeval	current;
+	long			sec;
+	long			usec;
+
+	gettimeofday(&current, NULL);
+	sec = current.tv_sec - sim->begin_time.tv_sec;
+	usec = current.tv_usec - sim->begin_time.tv_usec;
+	return (sec * 1000 + usec / 1000);
 }
+
 
 void	wait_all_threads(t_sim *sim)
 {
