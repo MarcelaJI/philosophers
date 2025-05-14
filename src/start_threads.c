@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 11:07:23 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/14 08:17:05 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/14 08:21:15 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,19 @@ long get_elapsed_ms(t_sim *sim)
 	return (ms);
 }
 
-void	ft_wait_all_threads(t_ *table)
+void	wait_all_threads(t_sim *sim)
 {
-	pthread_mutex_lock(&table->start_mutex);
-	while (!table->all_threads_ready)
+	pthread_mutex_lock(&sim->start_mutex);
+	while (!sim->all_threads_ready)
 	{
-		pthread_mutex_unlock(&table->start_mutex);
-		usleep(100); // Evita consumir CPU excesivamente
-		pthread_mutex_lock(&table->start_mutex);
+		pthread_mutex_unlock(&sim->start_mutex);
+		usleep(100);
+		pthread_mutex_lock(&sim->start_mutex);
 	}
-	gettimeofday(&table->start_simulator, NULL);
-	pthread_mutex_unlock(&table->start_mutex);
+	gettimeofday(&sim->begin_time, NULL);
+	pthread_mutex_unlock(&sim->start_mutex);
 }
+
 
 
 void	start_threads(t_sim *sim)
