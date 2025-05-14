@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 11:17:24 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/14 08:20:27 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_sim
 	int		num_times_to_eat;
 	int		dead;
 	size_t	start_time;
+	pthread_mutex_t	start_mutex;
 	pthread_mutex_t write_lock;
 	pthread_mutex_t dead_lock;
 	pthread_mutex_t meal_lock;
@@ -66,6 +67,7 @@ typedef struct s_sim
 	t_philo         *philos;       // array de filósofos
 	struct timeval	begin_time;
 	int				someone_died;     // flag que indica si algún filósofo murió
+	bool			all_threads_ready;
 }	t_sim;
 
 
