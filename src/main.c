@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/14 08:26:25 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/14 08:30:50 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ int	main(int argc, char **argv)
 
 	pthread_mutex_init(&sim->start_mutex, NULL); 
 	sim->all_threads_ready = false;             
-
-	gettimeofday(&sim->begin_time, NULL); 
-	printf("🟢 begin_time set at: %ld.%06ld\n",
-		sim->begin_time.tv_sec, sim->begin_time.tv_usec);
 
 	start_ms = get_elapsed_ms(sim);
 	i = 0;

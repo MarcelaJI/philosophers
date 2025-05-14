@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:00:47 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/09 11:01:55 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/14 08:38:29 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,14 @@ int	ft_atoi(const char *str)
 	return ((int)(result * sign));
 }
 
-void	print_status(t_philo *philo, char *message, char *color)
+void	print_status(t_philo *philo, char *msg, char *color)
 {
 	long	timestamp;
 
 	pthread_mutex_lock(&philo->sim->write_lock);
 	timestamp = get_elapsed_ms(philo->sim);
-	printf("%s%ld %d %s%s\n", color, timestamp, philo->id, message, RESET);
+	if (!philo->sim->someone_died)
+		printf("%s%ld %d %s%s\n", color, timestamp, philo->id, msg, RESET);
 	pthread_mutex_unlock(&philo->sim->write_lock);
 }
+

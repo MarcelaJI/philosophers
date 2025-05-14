@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:58:35 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/13 11:55:41 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/14 08:33:41 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ int	check_death(t_sim *sim)
 
 void	*monitor_func(void *arg)
 {
-	t_sim	*sim = (t_sim *)arg;
+	t_sim	*sim;
+	sim = (t_sim *)arg;
 
 	while (!check_death(sim))
 		usleep(1000);
