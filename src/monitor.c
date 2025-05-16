@@ -6,16 +6,16 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:58:35 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/16 09:11:59 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 09:34:24 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-static int	philo_died(t_philo *philo)
+static int philo_died(t_philo *philo)
 {
-	long	last_meal;
-	long	now;
+	long last_meal;
+	long now;
 
 	pthread_mutex_lock(&philo->mutex);
 	last_meal = philo->last_meal;
@@ -31,6 +31,7 @@ static int	philo_died(t_philo *philo)
 	}
 	return (0);
 }
+
 
 
 int	check_death(t_sim *sim)
