@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:58:35 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/14 08:33:41 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 09:11:59 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ void	*monitor_func(void *arg)
 
 	while (!check_death(sim))
 		usleep(1000);
+	
+
 	return (NULL);
 }
