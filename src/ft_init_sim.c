@@ -6,13 +6,13 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 08:36:11 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/16 11:53:58 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:39:45 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void init_forks(t_sim *sim)
+pthread_mutex_t  init_forks(t_sim *sim)
 {
 	int	i;
 
@@ -45,6 +45,8 @@ void	init_philos(t_sim *sim)
 		sim->philos[i].id = i + 1;
 		sim->philos[i].meals_eaten = 0;
 		sim->philos[i].last_meal = 0;
+		sim->philos[i].full = false;
+		sim->philos[i].is_eating = false;
 		sim->philos[i].sim = sim;
 		pthread_mutex_init(&sim->philos[i].mutex, NULL);
 		assign_forks(&sim->philos[i], i, sim);

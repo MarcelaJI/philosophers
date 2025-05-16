@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/16 10:32:41 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:33:18 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_philo
 	t_sim           *sim;          // referencia a los datos globales
 	pthread_mutex_t	mutex;  // Protege el acceso a last_meal, meals_eaten, etc.
 	bool            is_eating;
+	bool			full;
 }	t_philo;
 
 
@@ -61,7 +62,7 @@ typedef struct s_sim
 	size_t	start_time;
 	pthread_mutex_t	start_mutex;
 	pthread_mutex_t write_lock;
-	pthread_mutex_t dead_lock;
+	pthread_mutex_t *dead_lock;
 	pthread_mutex_t meal_lock;
 	pthread_mutex_t *forks;        // array de mutexes
 	t_philo         *philos;       // array de filósofos

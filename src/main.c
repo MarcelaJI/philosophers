@@ -6,11 +6,21 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/16 10:27:18 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 12:39:01 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+static void    initializatio(char **argv, t_sim *sim)
+{
+    t_philo *philos;
+    void *forks;
+
+    sim->philos = NULL;
+    sim->forks = NULL;
+    forks = init_forks(&sim);
+}
 
 int main(int argc, char **argv)
 {
