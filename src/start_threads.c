@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 11:07:23 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/16 10:32:29 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 10:51:53 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ long get_time_in_ms(t_sim *sim)
 	return ((now.tv_sec - sim->begin_time.tv_sec) * 1000
 		+ (now.tv_usec - sim->begin_time.tv_usec) / 1000);
 }
-
-
 
 void	wait_all_threads(t_sim *sim)
 {
