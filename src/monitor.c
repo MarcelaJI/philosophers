@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:58:35 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/16 09:34:24 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 09:34:55 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ static int philo_died(t_philo *philo)
 	}
 	return (0);
 }
-
-
 
 int	check_death(t_sim *sim)
 {

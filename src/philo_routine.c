@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:02:12 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/16 09:29:30 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 09:36:45 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ void	*philo_routine(void *arg)
 
 	philo = (t_philo *)arg;
 	wait_all_threads(philo->sim);
+	pthread_mutex_lock(&philo->mutex);
+	printf("[DEBUG] Philo %d starts with last_meal = %ld\n", philo->id, philo->last_meal);
+	pthread_mutex_unlock(&philo->mutex);
 	if (philo->id % 2 == 0)
 		usleep(1000);
 	while (should_continue(philo))
