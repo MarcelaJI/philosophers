@@ -6,31 +6,41 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 12:07:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/16 09:57:57 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 10:27:18 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_sim	sim;
+    t_sim sim;
 
-	if (argc != 5 && argc != 6)
-		return (error_exit("Invalid number of arguments\n"), 1);
-	parse_data(argv, &sim);
-	init_forks(&sim);
-	init_philos(&sim);
+    if (argc != 5 && argc != 6)
+    {
+        printf("Usage: ./philo num time_to_die time_to_eat time_to_sleep [num_times_to_eat]\n");
+        return (1);
+    }
 
-	gettimeofday(&sim.begin_time, NULL);
-	printf("🟢 begin_time set at: %ld.%06ld\n",
-		sim.begin_time.tv_sec, sim.begin_time.tv_usec);
+    printf("Address of sim in main: %p\n", (void*)&sim);
 
-	init_last_meals(&sim);
+    parse_data(argv, &sim);
 
-	start_threads(&sim);
-	wait_for_threads(&sim);
-	cleanup(&sim);
-	return (0);
+    if (gettimeofday(&sim.begin_time, NULL) != 0)
+	{
+    	perror("gettimeofday failed");
+    	return (1);
+	}
+
+    sim.start_time = get_time_in_ms(&sim);
+    printf("🟢 begin_time set at: %ld\n", sim.start_time);
+
+    init_forks(&sim);
+    init_philos(&sim);
+
+    start_threads(&sim);
+    monitor_func(&sim);
+    cleanup(&sim);
+
+    return (0);
 }
-

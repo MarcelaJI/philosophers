@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 11:48:14 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/14 08:44:45 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 10:32:41 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void    			init_forks(t_sim *sim);
 void 				init_philos(t_sim *sim);
 void		start_threads(t_sim *sim);
 void		*philo_routine(void *arg);
-long		get_elapsed_ms(t_sim *sim);
+long 	get_time_in_ms(t_sim *sim);
 void	print_status(t_philo *philo, char *message, char *color);
 void    take_forks(t_philo *philo);
 void	philo_eat(t_philo *philo);
@@ -94,6 +94,8 @@ int     philo_has_died(t_philo *philo);
 void 	release_forks(t_philo *philo);
 bool    should_continue(t_philo *philo);
 void	wait_all_threads(t_sim *sim);
+void init_last_meals(t_sim *sim);
+void cleanup(t_sim *sim);
 
 
 

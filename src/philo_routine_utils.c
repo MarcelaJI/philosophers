@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 10:43:40 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/16 09:57:18 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 10:11:44 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void init_last_meals(t_sim *sim)
 {
 	int		i;
 	long	start_ms;
-    start_ms = get_elapsed_ms(sim);
+    start_ms = get_time_in_ms(sim);
 
     i = 0;
 	while (i < sim->num_of_philos)

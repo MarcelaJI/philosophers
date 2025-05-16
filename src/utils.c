@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 13:00:47 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/14 08:38:29 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 10:10:52 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,24 @@ void	print_status(t_philo *philo, char *msg, char *color)
 	long	timestamp;
 
 	pthread_mutex_lock(&philo->sim->write_lock);
-	timestamp = get_elapsed_ms(philo->sim);
+	timestamp = get_time_in_ms(philo->sim);
 	if (!philo->sim->someone_died)
 		printf("%s%ld %d %s%s\n", color, timestamp, philo->id, msg, RESET);
 	pthread_mutex_unlock(&philo->sim->write_lock);
 }
 
+void cleanup(t_sim *sim)
+{
+	int	i;
+
+	i = 0;
+	while (i < sim->num_of_philos)
+		pthread_mutex_destroy(&sim->forks[i++]);
+	free(sim->forks);
+	i = 0;
+	while (i < sim->num_of_philos)
+		pthread_mutex_destroy(&sim->philos[i++].mutex);
+	free(sim->philos);
+	pthread_mutex_destroy(&sim->write_lock);
+	pthread_mutex_destroy(&sim->dead_lock);
+}

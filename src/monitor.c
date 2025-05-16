@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 13:58:35 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/16 09:34:55 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 10:11:23 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int philo_died(t_philo *philo)
 	last_meal = philo->last_meal;
 	pthread_mutex_unlock(&philo->mutex);
 
-	now = get_elapsed_ms(philo->sim);
+	now = get_time_in_ms(philo->sim);
 
 	if ((now - last_meal) >= philo->sim->time_to_die)
 	{
@@ -62,7 +62,6 @@ void	*monitor_func(void *arg)
 
 	while (!check_death(sim))
 		usleep(1000);
-	
 
 	return (NULL);
 }

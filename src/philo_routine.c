@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:02:12 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/16 09:54:09 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 10:10:21 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,21 @@ void	*philo_routine(void *arg)
 		if (philo_has_died(philo))
 			break ;
 		printf("[DEBUG] Philo %d trying to take forks at %ld ms\n",
-			philo->id, get_elapsed_ms(philo->sim));
+			philo->id, get_time_in_ms(philo->sim));
 		take_forks(philo);
 		printf("[DEBUG] Philo %d took forks at %ld ms\n",
-			philo->id, get_elapsed_ms(philo->sim));
+			philo->id, get_time_in_ms(philo->sim));
 		if (philo_has_died(philo))
 		{
 			release_forks(philo);
 			printf("[DEBUG] Philo %d released forks at %ld ms due to death\n",
-				philo->id, get_elapsed_ms(philo->sim));
+				philo->id, get_time_in_ms(philo->sim));
 			break ;
 		}
 		philo_eat(philo);
 		release_forks(philo);
 		printf("[DEBUG] Philo %d released forks at %ld ms after eating\n",
-			philo->id, get_elapsed_ms(philo->sim));
+			philo->id, get_time_in_ms(philo->sim));
 		if (philo_has_died(philo))
 			break ;
 		philo_sleep(philo);
@@ -77,7 +77,7 @@ void philo_eat(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->mutex);
 	philo->is_eating = true;
-	philo->last_meal = get_elapsed_ms(philo->sim);
+	philo->last_meal = get_time_in_ms(philo->sim);
 	printf("[DEBUG] Philo %d sets last_meal = %ld ms\n", philo->id, philo->last_meal);
 	pthread_mutex_unlock(&philo->mutex);
 	print_status(philo, "is eating 🍴", GREEN);
