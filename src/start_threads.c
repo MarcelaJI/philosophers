@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 11:07:23 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/16 09:24:35 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/16 09:51:56 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,11 @@
 
 long get_elapsed_ms(t_sim *sim)
 {
-	struct timeval current;
-	long sec;
-	long usec;
-
-	gettimeofday(&current, NULL);
-	sec = current.tv_sec - sim->begin_time.tv_sec;
-	usec = current.tv_usec - sim->begin_time.tv_usec;
-	if (usec < 0)
-	{
-		sec -= 1;
-		usec += 1000000;
-	}
-	return sec * 1000 + usec / 1000;
+	struct timeval	now;
+	
+	gettimeofday(&now, NULL);
+	return ((now.tv_sec - sim->begin_time.tv_sec) * 1000
+		+ (now.tv_usec - sim->begin_time.tv_usec) / 1000);
 }
 
 
