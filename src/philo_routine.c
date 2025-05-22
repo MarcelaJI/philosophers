@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:31:22 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 10:19:25 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 11:02:00 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	*philo_routine(void *arg)
 		print_status(philo, "died 💀", RED);
 		return (NULL);
 	}
-	if (philo->id % 2 == 0)
-		ft_usleep(philo->sim->time_to_eat / 10);
+	//if (philo->id % 2 == 0)
+	//	ft_usleep(philo->sim->time_to_eat / 10);
 	while (!philo_has_died(philo))
 	{
 		philo_eat(philo);

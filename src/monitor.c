@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 22:01:41 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 10:32:56 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 11:10:28 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,14 @@ int	philo_has_died(t_philo *philo)
 
 void	*monitor_func(void *arg)
 {
-	t_sim *sim = (t_sim *)arg;
+	t_sim *sim;
+	
+	sim = (t_sim *)arg;
 	while (1)
 	{
 		if (check_death(sim) || check_if_all_ate(sim))
 			break ;
-		usleep (300);
+		usleep (100);
 	}
 	return (NULL);
 }
