@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 10:06:53 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 08:17:13 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 11:44:38 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,19 @@ long	get_current_time_ms(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-void	print_status(t_philo *philo, char *msg, char *color)
+void	print_status(t_philo *philo, char *status, char *color)
 {
 	long	timestamp;
 
 	pthread_mutex_lock(&philo->sim->write_lock);
-	if (!philo_has_died(philo))
+	if (!philo_has_died(philo) || ft_strncmp(status, "died 💀", 7) == 0)
 	{
 		timestamp = get_current_time_ms() - philo->sim->start_time;
-		printf("%s%ld %d %s\n", color, timestamp, philo->id, msg);
+		printf("%ld %d %s%s%s\n", timestamp, philo->id, color, status, RESET);
 	}
 	pthread_mutex_unlock(&philo->sim->write_lock);
 }
+
 
 void	ft_usleep(size_t time_in_ms)
 {
@@ -81,3 +82,18 @@ void	ft_usleep(size_t time_in_ms)
 	while ((get_current_time_ms() - start) < time_in_ms)
 		usleep(500);
 }
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n && (s1[i] || s2[i]))
+	{
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
+}
+

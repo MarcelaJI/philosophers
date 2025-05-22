@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:17:53 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 08:17:41 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 11:44:52 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ void					ft_usleep(size_t time_in_ms);
 int						ft_strlen(char *str);
 int						check_if_all_ate(t_sim *philos);
 void					taken_forks(t_philo *philo);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif
