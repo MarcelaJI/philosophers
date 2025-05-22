@@ -3,26 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   parse_data_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:36:51 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/21 21:29:05 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 08:16:33 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-bool ft_isspace(char c)
+bool	ft_isspace(char c)
 {
-    if ((c >= 9 && c <= 13) || c == 32)
-        return (true);
-    return (false);
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (true);
+	return (false);
 }
 
-bool ft_is_digit(char c)
+bool	ft_is_digit(char c)
 {
-    if (c >= '0' && c <= '9')
-        return (true);
-    return (false);
+	if (c >= '0' && c <= '9')
+		return (true);
+	return (false);
 }
-

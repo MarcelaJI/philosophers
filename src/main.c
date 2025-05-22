@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:18:40 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/21 21:24:36 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 08:16:12 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	main(int argc, char **argv)
 
 	if (argc != 5 && argc != 6)
 		error_exit("Wrong argument count\n");
-
 	parse_data(argv, &sim);
 	init_forks(&sim);
 	init_philos(&sim);

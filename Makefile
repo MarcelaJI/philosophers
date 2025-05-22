@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+         #
+#    By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/20 09:35:49 by ingjimen          #+#    #+#              #
-#    Updated: 2025/05/21 21:23:10 by ingjimen         ###   ########.fr        #
+#    Updated: 2025/05/22 08:17:18 by ingjimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

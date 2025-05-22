@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 10:06:53 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/21 21:33:14 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 08:17:13 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	ft_atoi(const char *str)
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - '0');
-		if ((sign == 1 && result > INT_MAX) || (sign == -1 && -result < INT_MIN))
+		if ((sign == 1 && result > INT_MAX) || (sign == -1 &&
+				-result < INT_MIN))
 			return (-1);
 		i++;
 	}
@@ -51,10 +52,10 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-long get_current_time_ms(void)
+long	get_current_time_ms(void)
 {
 	struct timeval	tv;
-	
+
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
@@ -72,14 +73,11 @@ void	print_status(t_philo *philo, char *msg, char *color)
 	pthread_mutex_unlock(&philo->sim->write_lock);
 }
 
-
-
-void ft_usleep(size_t time_in_ms)
+void	ft_usleep(size_t time_in_ms)
 {
-    size_t start;
+	size_t	start;
+
 	start = get_current_time_ms();
-    while ((get_current_time_ms() - start) < time_in_ms)
-        usleep(500);  
+	while ((get_current_time_ms() - start) < time_in_ms)
+		usleep(500);
 }
-
-

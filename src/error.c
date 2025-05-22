@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 10:42:29 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/21 21:36:16 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 08:15:47 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void    error_exit(const char *msg)
+void	error_exit(const char *msg)
 {
-        printf(RED"%s"RESET, msg);
-        exit(EXIT_FAILURE);
+	printf(RED "%s" RESET, msg);
+	exit(EXIT_FAILURE);
 }
 
-void    ft_error_parsing(t_sim *sim)
+void	ft_error_parsing(t_sim *sim)
 {
-        clean_up_all("Error: parsing error\n", sim);
-        error_exit("Error: Parsing error");
+	clean_up_all("Error: parsing error\n", sim);
+	error_exit("Error: Parsing error");
 }
