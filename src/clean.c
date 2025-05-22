@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 08:14:44 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 08:15:39 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 08:19:59 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	clean_up_all(char *str, t_sim *sim)
 {
-	int i;
+	int	i;
 
 	if (str)
 	{

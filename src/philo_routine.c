@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:31:22 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 08:17:02 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 08:19:01 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	*philo_routine(void *arg)
 	philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
 		ft_usleep(philo->sim->time_to_eat / 10);
-	;
 	while (!philo_has_died(philo))
 	{
 		philo_eat(philo);
