@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 10:06:53 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 11:44:38 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 21:59:38 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,22 @@ void	print_status(t_philo *philo, char *status, char *color)
 	pthread_mutex_unlock(&philo->sim->write_lock);
 }
 
-
-void	ft_usleep(size_t time_in_ms)
+void	ft_usleep(long time_in_ms, t_philo *philo)
 {
-	size_t	start;
+	long	start;
+	long	now;
 
 	start = get_current_time_ms();
-	while ((get_current_time_ms() - start) < time_in_ms)
-		usleep(500);
+	while (!philo_has_died(philo))
+	{
+		now = get_current_time_ms();
+		if ((now - start) >= time_in_ms)
+			break;
+		usleep(500); // check each 0.5ms
+	}
 }
+
+
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

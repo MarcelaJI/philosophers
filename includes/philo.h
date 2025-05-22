@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:17:53 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 11:44:52 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 21:46:34 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int						check_death(t_sim *sim);
 void					*monitor_func(void *arg);
 int						philo_has_died(t_philo *philo);
 void					release_forks(t_philo *philo);
-void					ft_usleep(size_t time_in_ms);
+void ft_usleep(long time_in_ms, t_philo *philo);
 int						ft_strlen(char *str);
 int						check_if_all_ate(t_sim *philos);
 void					taken_forks(t_philo *philo);
