@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:25:09 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 08:16:56 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 10:22:04 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	taken_forks(t_philo *philo)
 	}
 	else
 	{
+		usleep(500);
 		pthread_mutex_lock(philo->l_fork);
 		print_status(philo, "has taken a fork", CYAN);
 		pthread_mutex_lock(philo->r_fork);

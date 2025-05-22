@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 22:01:41 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 08:16:21 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 10:32:56 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	*monitor_func(void *arg)
 	{
 		if (check_death(sim) || check_if_all_ate(sim))
 			break ;
-		usleep(1000);
+		usleep (300);
 	}
 	return (NULL);
 }

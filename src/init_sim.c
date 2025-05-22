@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 10:59:10 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 08:15:53 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/22 10:07:19 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_philos(t_sim *sim)
 	sim->philos = malloc(sizeof(t_philo) * sim->num_of_philos);
 	if (!sim->philos)
 		error_exit("Error: Failed to allocate memory for philosophers\n");
+	sim->start_time = get_current_time_ms();
 	i = 0;
 	while (i < sim->num_of_philos)
 	{
