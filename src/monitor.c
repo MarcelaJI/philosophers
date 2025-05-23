@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 22:01:41 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/23 10:35:37 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 10:45:13 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	check_if_all_ate(t_sim *sim)
 		pthread_mutex_lock(&sim->dead_lock);
 		sim->someone_died = 1;
 		pthread_mutex_unlock(&sim->dead_lock);
-		printf(YELLOW "[%ld] YELLOW All philosophers are full 🐷🍝😊\n" RESET,
+		printf(YELLOW "[%ld] All philosophers are full 🐷🍝😊\n" RESET,
 			get_current_time_ms() - sim->start_time);
 		return (1);
 	}
