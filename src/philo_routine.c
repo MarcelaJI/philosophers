@@ -6,20 +6,20 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:31:22 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/23 11:09:29 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 11:23:16 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../includes/philo.h"
 
 #include "../includes/philo.h"
 
 static void	check_and_print_full(t_philo *philo)
 {
 	long	timestamp;
+	int		required_meals;
 
-	if (philo->sim->number_of_times_each_philosopher_must_eat != -1
-		&& philo->meals_eaten == philo->sim->number_of_times_each_philosopher_must_eat)
+	required_meals = philo->sim->number_of_times_each_philosopher_must_eat;
+	if (required_meals != -1
+		&& philo->meals_eaten == required_meals)
 	{
 		pthread_mutex_lock(&philo->sim->full_lock);
 		philo->sim->full_philos++;
@@ -27,8 +27,10 @@ static void	check_and_print_full(t_philo *philo)
 		{
 			timestamp = get_current_time_ms() - philo->sim->start_time;
 			pthread_mutex_lock(&philo->sim->write_lock);
-			printf(YELLOW "[%ld] All philosophers have eaten %d times 🐷😝\n" RESET,
-				timestamp, philo->sim->number_of_times_each_philosopher_must_eat);
+			printf(YELLOW "[%ld] All philosophers have eaten %d times "
+				"🐷😝\n" RESET,
+				timestamp,
+				required_meals);
 			pthread_mutex_unlock(&philo->sim->write_lock);
 		}
 		pthread_mutex_unlock(&philo->sim->full_lock);
@@ -52,7 +54,7 @@ void	philo_eat(t_philo *philo)
 	release_forks(philo);
 }
 
-void philo_sleep(t_philo *philo)
+void	philo_sleep(t_philo *philo)
 {
 	if (philo_has_died(philo))
 		return ;
@@ -60,18 +62,17 @@ void philo_sleep(t_philo *philo)
 	ft_usleep(philo->sim->time_to_sleep, philo);
 }
 
-
-void philo_think(t_philo *philo)
+void	philo_think(t_philo *philo)
 {
 	if (philo_has_died(philo))
 		return ;
 	print_status(philo, "is thinking 🤔", MAGENTA);
 }
 
-void *philo_routine(void *arg)
+void	*philo_routine(void *arg)
 {
-	t_philo *philo;
-	
+	t_philo	*philo;
+
 	philo = (t_philo *)arg;
 	if (philo->sim->num_of_philos == 1)
 	{
@@ -84,7 +85,6 @@ void *philo_routine(void *arg)
 	}
 	if (philo->id % 2 == 0)
 		ft_usleep(philo->sim->time_to_eat / 10, philo);
-
 	while (!philo_has_died(philo))
 	{
 		philo_eat(philo);
@@ -93,4 +93,3 @@ void *philo_routine(void *arg)
 	}
 	return (NULL);
 }
-
