@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 22:01:41 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/23 11:02:27 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 11:03:23 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	count_finished_eating(t_sim *sim)
 	while (i < sim->num_of_philos)
 	{
 		pthread_mutex_lock(&sim->meal_lock);
-		if (sim->philos[i].meals_eaten 
+		if (sim->philos[i].meals_eaten
 			>= sim->number_of_times_each_philosopher_must_eat)
 			finished++;
 		pthread_mutex_unlock(&sim->meal_lock);
