@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:31:22 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/23 10:28:21 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 11:01:03 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,16 @@ void philo_think(t_philo *philo)
 	if (philo_has_died(philo))
 		return ;
 	print_status(philo, "is thinking 🤔", MAGENTA);
+}
+
+int	philo_has_died(t_philo *philo)
+{
+	int	result;
+
+	pthread_mutex_lock(&philo->sim->dead_lock);
+	result = philo->sim->someone_died;
+	pthread_mutex_unlock(&philo->sim->dead_lock);
+	return (result);
 }
 
 void *philo_routine(void *arg)

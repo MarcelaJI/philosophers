@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 22:01:41 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/23 10:45:13 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 11:02:27 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,33 @@ int	check_death(t_sim *sim)
 	return (0);
 }
 
-int	check_if_all_ate(t_sim *sim)
+static int	count_finished_eating(t_sim *sim)
 {
 	int	i;
-	int	finished_eating;
+	int	finished;
 
-	if (sim->number_of_times_each_philosopher_must_eat == -1)
-		return (0);
-	finished_eating = 0;
+	finished = 0;
 	i = 0;
 	while (i < sim->num_of_philos)
 	{
 		pthread_mutex_lock(&sim->meal_lock);
-		if (sim->philos[i].meals_eaten >= sim->number_of_times_each_philosopher_must_eat)
-			finished_eating++;
+		if (sim->philos[i].meals_eaten 
+			>= sim->number_of_times_each_philosopher_must_eat)
+			finished++;
 		pthread_mutex_unlock(&sim->meal_lock);
 		i++;
 	}
-	if (finished_eating == sim->num_of_philos)
+	return (finished);
+}
+
+int	check_if_all_ate(t_sim *sim)
+{
+	int	finished;
+
+	if (sim->number_of_times_each_philosopher_must_eat == -1)
+		return (0);
+	finished = count_finished_eating(sim);
+	if (finished == sim->num_of_philos)
 	{
 		pthread_mutex_lock(&sim->dead_lock);
 		sim->someone_died = 1;
@@ -80,16 +89,6 @@ int	check_if_all_ate(t_sim *sim)
 		return (1);
 	}
 	return (0);
-}
-
-int	philo_has_died(t_philo *philo)
-{
-	int	result;
-
-	pthread_mutex_lock(&philo->sim->dead_lock);
-	result = philo->sim->someone_died;
-	pthread_mutex_unlock(&philo->sim->dead_lock);
-	return (result);
 }
 
 void	*monitor_func(void *arg)
