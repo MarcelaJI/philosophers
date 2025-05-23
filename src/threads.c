@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:30:19 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/23 11:36:42 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 11:42:09 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,3 @@ void	start_threads(t_sim *sim)
 	create_threads(sim, &monitor_thread);
 	join_threads(sim, &monitor_thread);
 }
-
