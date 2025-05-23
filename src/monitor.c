@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 22:01:41 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 22:09:56 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 09:26:32 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,13 @@ int philo_died(t_philo *philo, size_t time)
     pthread_mutex_lock(&philo->sim->meal_lock);
     last_meal = philo->last_meal;
     pthread_mutex_unlock(&philo->sim->meal_lock);
-
     diff = current_time - last_meal;
-    printf("[DEBUG %ld] Philosopher %d → now: %ld | last_meal: %ld | diff: %ld\n",
-        current_time - philo->sim->start_time,
-        philo->id,
-        current_time,
-        last_meal,
-        diff
-    );
     if (diff >= (long)time)
     {
-        printf("[DEAD  %ld] Philosopher %d died 💀\n",
-            current_time - philo->sim->start_time,
-            philo->id
-        );
         result = 1;
     }
-
-    return result;
+    return (result);
 }
-
 
 
 int check_death(t_sim *sim)
@@ -71,7 +57,7 @@ int	check_if_all_ate(t_sim *sim)
 	int	finished_eating;
 
 	if (sim->number_of_times_each_philosopher_must_eat == -1)
-		return (EXIT_FAILURE);
+		return (0);
 	finished_eating = 0;
 	i = 0;
 	while (i < sim->num_of_philos)
@@ -87,12 +73,13 @@ int	check_if_all_ate(t_sim *sim)
 		pthread_mutex_lock(&sim->dead_lock);
 		sim->someone_died = 1;
 		pthread_mutex_unlock(&sim->dead_lock);
-		printf(RESET "%ld " YELLOW "All philosophers are full 🐷🥴🐷\n" RESET,
+		printf(RESET "%ld " YELLOW "All philosophers are full 🐷\n" RESET,
 			get_current_time_ms() - sim->start_time);
 		return (1);
 	}
-	return (EXIT_SUCCESS);
+	return (0);
 }
+
 
 
 int	philo_has_died(t_philo *philo)
@@ -104,16 +91,19 @@ int	philo_has_died(t_philo *philo)
 	pthread_mutex_unlock(&philo->sim->dead_lock);
 	return (result);
 }
-
 void *monitor_func(void *arg)
 {
-    t_sim *sim = (t_sim *)arg;
+    t_sim *sim;
+    
+    sim = (t_sim *)arg;
 
     while (1)
     {
         if (check_death(sim) || check_if_all_ate(sim))
             break;
-        usleep(1000); // chequea cada 1 ms
+        usleep(1000);
     }
-    return NULL;
+    return (NULL);
 }
+
+

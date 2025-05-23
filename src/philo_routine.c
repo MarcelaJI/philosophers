@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:31:22 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 21:59:15 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 09:27:52 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,18 @@
 void philo_eat(t_philo *philo)
 {
 	taken_forks(philo);
-
 	pthread_mutex_lock(&philo->sim->meal_lock);
 	philo->eating = 1;
 	philo->last_meal = get_current_time_ms();
 	philo->meals_eaten++;
-    printf(YELLOW "[%ld] Philosopher %d starts eating (last_meal = %ld)\n" RESET,
-	    get_current_time_ms() - philo->sim->start_time, philo->id, philo->last_meal);
 	pthread_mutex_unlock(&philo->sim->meal_lock);
-
 	print_status(philo, "is eating 🍽️", GREEN);
 	ft_usleep(philo->sim->time_to_eat, philo);
-
 	if (philo_has_died(philo))
 	{
 		release_forks(philo);
-		return;
+		return ;
 	}
-
 	pthread_mutex_lock(&philo->sim->meal_lock);
 	philo->eating = 0;
 	pthread_mutex_unlock(&philo->sim->meal_lock);
@@ -45,8 +39,6 @@ void philo_sleep(t_philo *philo)
 	if (philo_has_died(philo))
 		return ;
 	print_status(philo, "is sleeping😴", BLUE);
-	printf(CYAN "[%ld] Philosopher %d goes to sleep\n" RESET,
-		get_current_time_ms() - philo->sim->start_time, philo->id);
 	ft_usleep(philo->sim->time_to_sleep, philo);
 }
 
@@ -54,9 +46,8 @@ void philo_sleep(t_philo *philo)
 void philo_think(t_philo *philo)
 {
 	if (philo_has_died(philo))
-		return;
+		return ;
 	print_status(philo, "is thinking 🤔", MAGENTA);
-	ft_usleep(50, philo);  // Pensamiento breve para evitar starvation
 }
 
 void *philo_routine(void *arg)
