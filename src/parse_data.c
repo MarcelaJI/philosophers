@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 10:00:56 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 08:16:40 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 09:52:56 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,23 @@ static void	ft_init_sim(t_sim *sim, char **argv)
 	pthread_mutex_init(&sim->meal_lock, NULL);
 }
 
-void	parse_data(char **argv, t_sim *table)
+int parse_data(char **argv, t_sim *table)
 {
-	int	i;
+    int i = 1;
 
-	i = 1;
-	while (argv[i])
-	{
-		if (!ft_check_argument(argv[i]))
-			return (ft_error_parsing(table));
-		i++;
-	}
-	ft_init_sim(table, argv);
-	if (table->num_of_philos < 1 || table->num_of_philos > PHILO_MAX
-		|| table->time_to_die <= 0 || table->time_to_eat <= 0
-		|| table->time_to_sleep <= 0)
-		return (ft_error_parsing(table));
-	table->start_time = get_current_time_ms();
+    while (argv[i])
+    {
+        if (!ft_check_argument(argv[i]))
+            return (1);
+        i++;
+    }
+    ft_init_sim(table, argv);
+    if (table->num_of_philos < 1 || table->num_of_philos > PHILO_MAX
+        || table->time_to_die <= 0 || table->time_to_eat <= 0
+        || table->time_to_sleep <= 0)
+        return (1); // error
+
+    table->start_time = get_current_time_ms();
+    return (0);
 }
+

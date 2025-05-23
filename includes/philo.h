@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:17:53 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/23 09:44:39 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 09:55:11 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_sim
 }						t_sim;
 
 // error
-void					ft_error_parsing(t_sim *sim);
 void					error_exit(const char *msg);
 
 // clean
@@ -76,7 +75,7 @@ void					clean_up_all(char *str, t_sim *sim);
 bool					ft_isspace(char c);
 bool					ft_is_digit(char c);
 int						ft_atoi(const char *str);
-void					parse_data(char **argv, t_sim *table);
+int parse_data(char **argv, t_sim *table);
 
 // init_simulation
 void					init_forks(t_sim *sim);
