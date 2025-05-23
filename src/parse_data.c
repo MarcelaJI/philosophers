@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 10:00:56 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/23 09:52:56 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 10:27:28 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,18 @@ static void	ft_init_sim(t_sim *sim, char **argv)
 	else
 		sim->number_of_times_each_philosopher_must_eat = -1;
 	sim->someone_died = 0;
+	sim->full_philos = 0;
 	pthread_mutex_init(&sim->write_lock, NULL);
 	pthread_mutex_init(&sim->dead_lock, NULL);
 	pthread_mutex_init(&sim->meal_lock, NULL);
+	pthread_mutex_init(&sim->full_lock, NULL);
 }
 
 int parse_data(char **argv, t_sim *table)
 {
-    int i = 1;
+    int i;
 
+	i = 1;
     while (argv[i])
     {
         if (!ft_check_argument(argv[i]))
@@ -64,8 +67,7 @@ int parse_data(char **argv, t_sim *table)
     if (table->num_of_philos < 1 || table->num_of_philos > PHILO_MAX
         || table->time_to_die <= 0 || table->time_to_eat <= 0
         || table->time_to_sleep <= 0)
-        return (1); // error
-
+        return (1);
     table->start_time = get_current_time_ms();
     return (0);
 }

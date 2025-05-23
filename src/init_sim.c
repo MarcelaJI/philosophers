@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 10:59:10 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/22 10:07:19 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 09:58:52 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init_forks(t_sim *sim)
 
 void	init_philos(t_sim *sim)
 {
-	int i;
+	int			i;
 
 	sim->philos = malloc(sizeof(t_philo) * sim->num_of_philos);
 	if (!sim->philos)
@@ -46,7 +46,6 @@ void	init_philos(t_sim *sim)
 		sim->philos[i].eating = 0;
 		sim->philos[i].meals_eaten = 0;
 		sim->philos[i].last_meal = sim->start_time;
-		;
 		sim->philos[i].sim = sim;
 		pthread_mutex_init(&sim->philos[i].mutex, NULL);
 		assign_forks(&sim->philos[i], i, sim);

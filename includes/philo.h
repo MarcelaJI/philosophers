@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:17:53 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/23 09:55:11 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 10:24:20 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,13 @@ typedef struct s_sim
 	int					time_to_eat;
 	int					time_to_sleep;
 	int					number_of_times_each_philosopher_must_eat;
+	int					full_philos;
 	int					someone_died;
 	size_t				start_time;
 	pthread_mutex_t		write_lock;
 	pthread_mutex_t		dead_lock;
 	pthread_mutex_t		meal_lock;
+	pthread_mutex_t		full_lock;
 	pthread_mutex_t		*forks;
 	t_philo				*philos;
 	struct timeval		begin_time;
@@ -75,7 +77,7 @@ void					clean_up_all(char *str, t_sim *sim);
 bool					ft_isspace(char c);
 bool					ft_is_digit(char c);
 int						ft_atoi(const char *str);
-int parse_data(char **argv, t_sim *table);
+int						parse_data(char **argv, t_sim *table);
 
 // init_simulation
 void					init_forks(t_sim *sim);
@@ -94,7 +96,7 @@ int						check_death(t_sim *sim);
 void					*monitor_func(void *arg);
 int						philo_has_died(t_philo *philo);
 void					release_forks(t_philo *philo);
-void ft_usleep(long time_in_ms, t_philo *philo);
+void					ft_usleep(long time_in_ms, t_philo *philo);
 int						ft_strlen(char *str);
 int						check_if_all_ate(t_sim *philos);
 void					taken_forks(t_philo *philo);
