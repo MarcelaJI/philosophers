@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 11:31:22 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/23 11:23:16 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/23 11:34:11 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ void	*philo_routine(void *arg)
 		print_status(philo, "has taken a fork", CYAN);
 		ft_usleep(philo->sim->time_to_die, philo);
 		pthread_mutex_unlock(philo->l_fork);
-		print_status(philo, "died 💀", RED);
+		pthread_mutex_lock(&philo->sim->dead_lock);
+		philo->sim->someone_died = 1;
+		pthread_mutex_unlock(&philo->sim->dead_lock);
 		return (NULL);
 	}
 	if (philo->id % 2 == 0)
@@ -93,3 +95,4 @@ void	*philo_routine(void *arg)
 	}
 	return (NULL);
 }
+
