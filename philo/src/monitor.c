@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ingjimen <ingjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 22:01:41 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/23 11:03:23 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/24 19:08:10 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_death(t_sim *sim)
 		{
 			pthread_mutex_lock(&sim->dead_lock);
 			sim->someone_died = 1;
-			printf(RED "%ld %d died 💀\n" RESET, get_current_time_ms()
+			printf(RED "[%ld] %d died 💀\n" RESET, get_current_time_ms()
 				- sim->start_time, sim->philos[i].id);
 			pthread_mutex_unlock(&sim->dead_lock);
 			return (1);
