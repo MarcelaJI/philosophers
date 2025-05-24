@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 10:06:53 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/23 11:08:29 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/24 16:19:46 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,15 @@ long	get_current_time_ms(void)
 
 void	print_status(t_philo *philo, char *status, char *color)
 {
-	long	timestamp;
+	long		timestamp;
 
-	if (philo_has_died(philo))
-		return ;
-	timestamp = get_current_time_ms() - philo->sim->start_time;
 	pthread_mutex_lock(&philo->sim->write_lock);
+	if (philo_has_died(philo))
+	{
+		pthread_mutex_unlock(&philo->sim->write_lock);
+		return ;
+	}
+	timestamp = get_current_time_ms() - philo->sim->start_time;
 	printf("%s[%ld] %d %s%s\n", CYAN, timestamp, philo->id, color, status);
 	printf(RESET);
 	pthread_mutex_unlock(&philo->sim->write_lock);
