@@ -6,7 +6,7 @@
 /*   By: ingjimen <ingjimen@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 09:36:51 by ingjimen          #+#    #+#             */
-/*   Updated: 2025/05/23 11:45:42 by ingjimen         ###   ########.fr       */
+/*   Updated: 2025/05/24 12:47:32 by ingjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ bool	ft_is_digit(char c)
 
 int	ft_atoi(const char *str)
 {
-	int i;
-	long sign;
-	long long result;
+	int				i;
+	long			sign;
+	long long		result;
 
 	i = 0;
 	result = 0;
@@ -46,8 +46,8 @@ int	ft_atoi(const char *str)
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - '0');
-		if ((sign == 1 && result > INT_MAX) || (sign == -1 &&
-				-result < INT_MIN))
+		if ((sign == 1 && result > INT_MAX)
+			|| (sign == -1 && - result < INT_MIN))
 			return (-1);
 		i++;
 	}
