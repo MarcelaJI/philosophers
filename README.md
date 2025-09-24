@@ -28,7 +28,8 @@ make
 ```
 Esto generará un ejecutable llamado **philo**.
 
-🧪 Ejecución
+## 🧪 Ejecución
+
 El programa acepta los siguientes argumentos:
 
 ```bash
@@ -47,37 +48,48 @@ Opcionalmente:
 
 Esto ejecuta la simulación con 5 filósofos, cada uno con 800ms antes de morir si no come, 200ms para comer, 200ms para dormir, y finaliza cuando todos han comido 7 veces.
 
-🧠 Descripción General
+
+---
+
+## 🧠 Descripción General
+
 Cada filósofo:
 
-🥢 Toma los tenedores
+- 🥢 Toma los tenedores
 
-🍽️ Come durante un tiempo definido
+- 🍽️ Come durante un tiempo definido
 
-😴 Duerme
+- 😴 Duerme
 
-🤔 Piensa
+- 🤔 Piensa
 
-🔁 Repite mientras esté vivo
+- 🔁 Repite mientras esté vivo
+
 
 Además:
 
-Si un filósofo no come en time_to_die, muere ☠️
+- Si un filósofo no come en time_to_die, muere ☠️
 
-Cuando todos comen number_of_times_each_philosopher_must_eat, el programa termina correctamente ✅
+- Cuando todos comen number_of_times_each_philosopher_must_eat, el programa termina correctamente ✅
 
-🧵 Programación Concurrente
+---
+
+## 🧵 Programación Concurrente
+
 Este proyecto hace uso de:
 
-pthread_mutex_t para gestionar acceso a los tenedores
+- pthread_mutex_t para gestionar acceso a los tenedores
 
-Un hilo por filósofo
+- Un hilo por filósofo
 
-Un hilo monitor que detecta muertes o finalización
+- Un hilo monitor que detecta muertes o finalización
 
-Colores e iconos se usan en la salida para hacer más visual la simulación.
+- Colores e iconos se usan en la salida para hacer más visual la simulación.
 
-💻 Cómo Clonarlo
+---
+
+
+## 💻 Cómo Clonarlo
 
 ```bash
 git clone https://github.com/MarcelaJI/philosophers.git
@@ -85,19 +97,24 @@ cd philosophers
 cd philo
 make
 ```
-✨ Extra
+
+### ✨ Extra
 Este proyecto incluye:
 
-🧠 Lógica modular
+- 🧠 Lógica modular
 
-🎨 Salida coloreada y emojis para mayor claridad
+- 🎨 Salida coloreada y emojis para mayor claridad
 
-🧼 Limpieza automática de recursos
+- 🧼 Limpieza automática de recursos
+
+---
 
 👨‍💻 Autora
-[ingjimen]
+[ingjimen](https://marcelaji.github.io/)
 
 📧 ingjimen@student.42madrid.com
+
+---
 
 📜 Licencia
 
