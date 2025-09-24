@@ -98,7 +98,7 @@ cd philo
 make
 ```
 
-### ✨ Extra
+## ✨ Extra
 Este proyecto incluye:
 
 - 🧠 Lógica modular
